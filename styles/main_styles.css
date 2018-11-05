@@ -816,9 +816,9 @@ section
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
 }
-.svg:hover path,
-.svg:hover rect,
-.svg:hover polygon
+.service:hover .svg path,
+.service:hover .svg rect,
+.service:hover .svg polygon
 {
 	fill: #ffae00;
 }
