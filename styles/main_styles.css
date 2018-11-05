@@ -755,7 +755,7 @@ section
 	padding-right: 30px;
 	overflow: hidden;
 }
-.service_icon_container
+.service_icon
 {
 	position: absolute;
 	top: 50%;
@@ -766,10 +766,15 @@ section
 	transform: translateY(-50%);
 	left: -80px;
 }
-.service_icon
+.service_icon > div
 {
 	width: 150px;
 	height: 164px;
+}
+.service_icon > div > svg
+{
+	max-width: 100%;
+	height: auto;
 }
 .service_title
 {
