@@ -5,9 +5,14 @@
 [Table of Contents]
 
 1. Vars and Inits
+2. Set Header
+3. Init Menu
 4. Init Home Slider
 5. Init App
-5. Init SVG
+6. Init SVG
+7. Init Scrolling
+8. Init Services Slider
+9. Init Testimonials Slider
 
 
 ******************************/
@@ -22,9 +27,72 @@ $(document).ready(function()
 
 	*/
 
+	var header = $('.header');
+
+	initMenu();
 	initHomeSlider();
 	initApp();
 	initSvg();
+	initScrolling();
+	initServicesSlider();
+	initTestimonialsSlider();
+
+	setHeader();
+
+	$(window).on('resize', function()
+	{
+		setHeader();
+
+		setTimeout(function()
+		{
+			$(window).trigger('resize.px.parallax');
+		}, 375);
+	});
+
+	$(document).on('scroll', function()
+	{
+		setHeader();
+	});
+
+	/* 
+
+	2. Set Header
+
+	*/
+
+	function setHeader()
+	{
+		if($(window).scrollTop() > 91)
+		{
+			header.addClass('scrolled');
+		}
+		else
+		{
+			header.removeClass('scrolled');
+		}
+	}
+
+	/* 
+
+	3. Init Menu
+
+	*/
+
+	function initMenu()
+	{
+		if($('.menu').length)
+		{
+			var menu = $('.menu');
+			var hamburger = $('.hamburger');
+
+			hamburger.on('click', function()
+			{
+				closeApp();
+				menu.toggleClass('active');
+				hamburger.toggleClass('active');
+			});
+		}
+	}
 
 	/* 
 
@@ -37,16 +105,84 @@ $(document).ready(function()
 		if($('.home_slider').length)
 		{
 			var homeSlider = $('.home_slider');
+			var slideBar = $('.slide_bar > div');
+			var slideNum = $('.slide_num');
+			var currentPage = 0;
+
+			// Initialized has to go before the slider initialization
+			homeSlider.on('initialized.owl.carousel', function(event)
+			{
+				slideBar.css({width: "100%", transition: "width 8000ms"});
+			});
+
 			homeSlider.owlCarousel(
 			{
 				items:1,
 				loop:true,
-				autoplay:false,
+				autoplay:true,
+				autoplayTimeout:8000,
 				nav:false,
 				dots:false,
 				smartSpeed:1200,
 				mouseDrag:false
 			});
+
+			homeSlider.on('translate.owl.carousel', function(event)
+			{
+				slideBar.css({width: "0%", transition: "width 0s"});
+			});
+
+			homeSlider.on('translated.owl.carousel', function(event)
+			{
+				//subtract smartSpeed value from the autoplayTimeout value
+				slideBar.css({width: "100%", transition: "width 6800ms"});
+				currentPage = (event.item.index - 1).toString();
+				if(currentPage.length === 1)
+				{
+					currentPage = "0" + currentPage + ".";
+				}
+				else
+				{
+					currentPage = currentPage + ".";
+				}
+				slideNum.text(currentPage);
+			});
+
+			// Fired before current slide change
+			homeSlider.on('change.owl.carousel', function(event)
+			{
+				var $currentItem = $('.home_slide', homeSlider).eq(event.item.index);
+				var $elemsToanim = $currentItem.find("[data-animation-out]");
+				setAnimation ($elemsToanim, 'out');
+			});
+
+			// Fired after current slide has been changed
+			homeSlider.on('changed.owl.carousel', function(event)
+			{
+				var $currentItem = $('.home_slide', homeSlider).eq(event.item.index);
+				var $elemsToanim = $currentItem.find("[data-animation-in]");
+				setAnimation ($elemsToanim, 'in');
+			});
+
+			// add animate.css class(es) to the elements to be animated
+			function setAnimation ( _elem, _InOut )
+			{
+				// Store all animationend event name in a string.
+				// cf animate.css documentation
+				var animationEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+				_elem.each ( function ()
+				{
+					var $elem = $(this);
+					var $animationType = 'animated ' + $elem.data( 'animation-' + _InOut );
+
+					$elem.addClass($animationType).one(animationEndEvent, function ()
+					{
+						$elem.removeClass($animationType); // remove animate.css Class at the end of the animations
+					});
+				});
+			}
+			
 		}
 	}
 
@@ -61,24 +197,41 @@ $(document).ready(function()
 		if($('.app').length)
 		{
 			var btn = $('.app_button');
-			var app = $('.app');
 			var close = $('.app_button_close');
-
 			btn.on('click', function()
 			{
-				app.addClass('active');
+				if(!$('.menu').hasClass('active'))
+				{
+					openApp();
+				}
 			});
 
 			close.on('click', function()
 			{
-				app.removeClass('active');
+				closeApp();
 			});
 		}
 	}
 
+	function openApp()
+	{
+		var app = $('.app');
+		var content = $('.app_content');
+		app.addClass('active');
+		content.addClass('active');
+	}
+
+	function closeApp(app, content)
+	{
+		var app = $('.app');
+		var content = $('.app_content');
+		app.removeClass('active');
+		content.removeClass('active');
+	}
+
 	/* 
 
-	5. Init SVG
+	6. Init SVG
 
 	*/
 
@@ -115,6 +268,90 @@ $(document).ready(function()
 				}, 'xml');
 			});
 		}	
+	}
+
+	/* 
+
+	7. Init Scrolling
+
+	*/
+
+	function initScrolling()
+	{
+		if($('.scroll_to').length)
+		{
+			var links = $('.scroll_to');
+	    	links.each(function()
+	    	{
+	    		var ele = $(this);
+	    		var target = ele.data('scroll-to');
+	    		ele.on('click', function(e)
+	    		{
+	    			e.preventDefault();
+	    			$(window).scrollTo(target, 1500, {offset: -75, easing: 'easeInOutQuart'});
+	    		});
+	    	});
+		}	
+	}
+
+	/* 
+
+	8. Init Services Slider
+
+	*/
+
+	function initServicesSlider()
+	{
+		if($('.services_slider').length)
+		{
+			var servicesSlider = $('.services_slider');
+			servicesSlider.owlCarousel(
+			{
+				items:3,
+				loop:true,
+				autoplay:true,
+				dots:false,
+				nav:false,
+				smartSpeed:1200,
+				margin:35,
+				responsive:
+				{
+					0:{items:1},
+					992:{items:2},
+					1441:{items:3}
+				}
+			});
+		}
+	}
+
+	/* 
+
+	9. Init Testimonials Slider
+
+	*/
+
+	function initTestimonialsSlider()
+	{
+		if($('.testimonials_slider').length)
+		{
+			var testimonialsSlider = $('.testimonials_slider');
+			testimonialsSlider.owlCarousel(
+			{
+				items:3,
+				loop:true,
+				autoplay:true,
+				nav:false,
+				dots:false,
+				smartSpeed:1200,
+				margin:35,
+				responsive:
+				{
+					0:{items:1},
+					992:{items:2},
+					1441:{items:3}
+				}
+			});
+		}
 	}
 
 });
