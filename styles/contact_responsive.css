@@ -36,10 +36,9 @@
 
 @media only screen and (max-width: 1440px)
 {
-	.section_expander
+	.app_content.active
 	{
-		width: 100%;
-		left: auto;
+		background: rgba(0,0,0,0.85);
 	}
 }
 
@@ -121,10 +120,32 @@
 	{
 		font-size: 84px;
 	}
-	.service
+	.contact_overlay
 	{
-		width: 100%;
-		padding-right: 90px;
+		left: calc(50% + 60px);
+		width: 324px;
+		height: 205px;
+	}
+	.contact_overlay_content
+	{
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	.contact_overlay_content .logo a > div:first-child
+	{
+		font-size: 24px;
+	}
+	.contact_overlay_content .logo a > div:last-child
+	{
+		font-size: 6px;
+	}
+	.contact_list ul li > div
+	{
+		font-size: 13px;
+	}
+	.contact_list ul li:not(:last-of-type)
+	{
+		margin-bottom: 5px;
 	}
 	.footer_col
 	{
@@ -196,6 +217,14 @@
 	{
 		font-size: 14px;
 	}
+	.home .section_title h1
+	{
+		font-size: 48px;
+	}
+	.home .article_image
+	{
+		width: 200px;
+	}
 	.section_title h1
 	{
 		font-size: 64px;
@@ -204,9 +233,16 @@
 	{
 		font-size: 18px;
 	}
-	.service
+	.contact_overlay
 	{
-		padding-right: 50px;
+		left: 50%;
+		-webkit-transform: translate(-50%, 0px);
+		-moz-transform: translate(-50%, 0px);
+		-ms-transform: translate(-50%, 0px%);
+		-o-transform: translate(-50%, 0px);
+		transform: translate(-50%, 0px);
+		top: auto;
+		bottom: 50px;
 	}
 }
 
@@ -267,57 +303,25 @@
 		-o-transform: rotate(45deg) translate(-5px, -5px);
 		transform: rotate(45deg) translate(-5px, -5px);
 	}
-	.home_title h1
+	.home
 	{
-		font-size: 48px;
+		height: 349px;
 	}
-	.home_text p
-	{
-		font-size: 16px;
-	}
-	.slide_text
-	{
-		display: none;
-	}
-	.slide_progress
-	{
-		left: 0;
-		bottom: 0;
-		width: 100vw;
-	}
-	.slide_bar
-	{
-		width: 100%;
-	}
-	.slide_num
-	{
-		display: none;
-	}
-	.section_title h1
+	.home .section_title h1
 	{
 		font-size: 36px;
 	}
-	.section_title_container p
+	.section_title h1
+	{
+	    font-size: 36px;
+	}
+	.footer .section_title_container p
 	{
 		font-size: 16px;
 	}
-	.service
+	.google_map
 	{
-		padding-right: 25px;
-		height: 203px;
-	}
-	.service_icon
-	{
-		left: -63px;
-	}
-	.service_icon > div
-	{
-	    width: 120px;
-	    height: 131px;
-	}
-	.service_title
-	{
-		font-size: 24px;
+		height: 530px;
 	}
 	.contact_form_button
 	{

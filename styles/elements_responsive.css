@@ -36,10 +36,9 @@
 
 @media only screen and (max-width: 1440px)
 {
-	.section_expander
+	.app_content.active
 	{
-		width: 100%;
-		left: auto;
+		background: rgba(0,0,0,0.85);
 	}
 }
 
@@ -75,13 +74,13 @@
 	{
 		display: inline-block;
 	}
-	.home_title h1
+	.loader_col:nth-last-child(n+3)
 	{
-		font-size: 96px;
+		margin-bottom: 49px;
 	}
-	.contact_info_list
+	.milestones_row > div[class^='col']:not(:nth-child(n+3))
 	{
-		padding-right: 0;
+		margin-bottom: 49px;
 	}
 }
 
@@ -109,10 +108,6 @@
 
 @media only screen and (max-width: 991px)
 {
-	.home_title h1
-	{
-		font-size: 72px;
-	}
 	.slide_bar
 	{
 		width: 249px;
@@ -121,14 +116,13 @@
 	{
 		font-size: 84px;
 	}
-	.service
+	.tabs_col
 	{
-		width: 100%;
-		padding-right: 90px;
+		margin-top: 40px;
 	}
-	.footer_col
+	.icon_boxes_row > div[class^='col']:not(:last-child)
 	{
-		margin-bottom: 63px;
+		margin-bottom: 49px;
 	}
 }
 
@@ -196,17 +190,37 @@
 	{
 		font-size: 14px;
 	}
+	.home .section_title h1
+	{
+		font-size: 48px;
+	}
 	.section_title h1
 	{
 		font-size: 64px;
 	}
-	.section_title_container p
+	.loader_col:nth-last-child(n+3)
 	{
-		font-size: 18px;
+		margin-bottom: 0px;
 	}
-	.service
+	.loader_col:not(:last-child)
 	{
-		padding-right: 50px;
+		margin-bottom: 49px;
+	}
+	.milestones_row > div[class^='col']:not(:nth-child(n+3))
+	{
+		margin-bottom: 0px;
+	}
+	.milestones_row > div[class^='col']:not(:last-child)
+	{
+		margin-bottom: 49px;
+	}
+	.milestone_counter
+	{
+		font-size: 72px;
+	}
+	.milestone_title
+	{
+		font-size: 20px;
 	}
 }
 
@@ -267,63 +281,87 @@
 		-o-transform: rotate(45deg) translate(-5px, -5px);
 		transform: rotate(45deg) translate(-5px, -5px);
 	}
-	.home_title h1
+	.home
 	{
-		font-size: 48px;
+		height: 349px;
 	}
-	.home_text p
-	{
-		font-size: 16px;
-	}
-	.slide_text
-	{
-		display: none;
-	}
-	.slide_progress
-	{
-		left: 0;
-		bottom: 0;
-		width: 100vw;
-	}
-	.slide_bar
-	{
-		width: 100%;
-	}
-	.slide_num
-	{
-		display: none;
-	}
-	.section_title h1
+	.home .section_title h1
 	{
 		font-size: 36px;
 	}
-	.section_title_container p
+	.section_title h1
 	{
-		font-size: 16px;
+	    font-size: 36px;
 	}
-	.service
+	.elements_title h1
 	{
-		padding-right: 25px;
-		height: 203px;
+		font-size: 36px;
 	}
-	.service_icon
-	{
-		left: -63px;
-	}
-	.service_icon > div
-	{
-	    width: 120px;
-	    height: 131px;
-	}
-	.service_title
-	{
-		font-size: 24px;
-	}
-	.contact_form_button
+	.button
 	{
 		width: 163px;
-    	height: 46px;
+	    height: 46px;
+	}
+	.button a
+	{
 		font-size: 12px;
+		line-height: 46px;
+	}
+	.button_3 a
+	{
+		line-height: 42px;
+	}
+	.accordion_container:not(:last-child)
+	{
+		margin-bottom: 15px;
+	}
+	.accordion
+	{
+		font-size: 14px;
+		padding-left: 25px;
+		height: 49px;
+		line-height: 49px;
+	}
+	.accordion::after
+	{
+		font-size: 14px;
+		line-height: 49px;
+	}
+	.accordion_panel p
+	{
+		font-size: 13px;
+	}
+	.tab
+	{
+		font-size: 14px;
+		height: 49px;
+		line-height: 49px;
+	}
+	.tab_text p
+	{
+		font-size: 13px;
+	}
+	.loader_container
+	{
+		height: 191px;
+	}
+	.loader
+	{
+		width: 191px;
+		height: 191px;
+	}
+	.progressbar-text
+	{
+		top: 43% !important;
+		font-size: 40px !important;
+	}
+	.loader_content
+	{
+		bottom: 73px;
+	}
+	.loader_title
+	{
+		font-size: 14px;
 	}
 	.footer_bar
 	{

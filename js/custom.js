@@ -13,6 +13,7 @@
 7. Init Scrolling
 8. Init Services Slider
 9. Init Testimonials Slider
+10. Init Parallax
 
 
 ******************************/
@@ -36,6 +37,7 @@ $(document).ready(function()
 	initScrolling();
 	initServicesSlider();
 	initTestimonialsSlider();
+	initParallax();
 
 	setHeader();
 
@@ -350,6 +352,23 @@ $(document).ready(function()
 					992:{items:2},
 					1441:{items:3}
 				}
+			});
+		}
+	}
+
+	/* 
+
+	10. Init Parallax
+
+	*/
+
+	function initParallax()
+	{
+		if($('.parallax_background').length)
+		{
+			$('.parallax_background').parallax(
+			{
+				speed:0.8
 			});
 		}
 	}

@@ -27,7 +27,14 @@
 
 @media only screen and (max-width: 1600px)
 {
-	
+	.home_container
+	{
+		-webkit-transform: translate(-222px, -50%);
+		-moz-transform: translate(-222px, -50%);
+		-ms-transform: translate(-222px, -50%);
+		-o-transform: translate(-222px, -50%);
+		transform: translate(-122px, -50%);
+	}
 }
 
 /************
@@ -36,10 +43,17 @@
 
 @media only screen and (max-width: 1440px)
 {
-	.section_expander
+	.home_container
 	{
-		width: 100%;
-		left: auto;
+		-webkit-transform: translate(0px, -50%);
+		-moz-transform: translate(0px, -50%);
+		-ms-transform: translate(0px, -50%);
+		-o-transform: translate(0px, -50%);
+		transform: translate(0px, -50%);
+	}
+	.app_content.active
+	{
+		background: rgba(0,0,0,0.85);
 	}
 }
 
@@ -117,14 +131,35 @@
 	{
 		width: 249px;
 	}
+	.home
+	{
+		height: auto;
+		padding-top: 209px;
+		padding-bottom: 167px;
+	}
+	.home_container
+	{
+		position: relative;
+		left: auto;
+		top: auto;
+		-webkit-transform: none;
+		-moz-transform: none;
+		-ms-transform: none;
+		-o-transform: none;
+		transform: none;
+	}
+	.about_row > div[class^='col']:not(:last-child)
+	{
+		margin-bottom: 30px;
+	}
 	.section_title h1
 	{
 		font-size: 84px;
 	}
-	.service
+	.item_extra_1,
+	.item_extra_2
 	{
-		width: 100%;
-		padding-right: 90px;
+		display: none !important;
 	}
 	.footer_col
 	{
@@ -204,10 +239,6 @@
 	{
 		font-size: 18px;
 	}
-	.service
-	{
-		padding-right: 50px;
-	}
 }
 
 /************
@@ -275,23 +306,10 @@
 	{
 		font-size: 16px;
 	}
-	.slide_text
+	.home
 	{
-		display: none;
-	}
-	.slide_progress
-	{
-		left: 0;
-		bottom: 0;
-		width: 100vw;
-	}
-	.slide_bar
-	{
-		width: 100%;
-	}
-	.slide_num
-	{
-		display: none;
+		min-height: 100vh;
+		padding-top: 159px;
 	}
 	.section_title h1
 	{
@@ -301,23 +319,13 @@
 	{
 		font-size: 16px;
 	}
-	.service
+	.milestones_row
 	{
-		padding-right: 25px;
-		height: 203px;
+		margin-top: 148px;
 	}
-	.service_icon
+	.milestone_counter
 	{
-		left: -63px;
-	}
-	.service_icon > div
-	{
-	    width: 120px;
-	    height: 131px;
-	}
-	.service_title
-	{
-		font-size: 24px;
+		font-size: 56px;
 	}
 	.contact_form_button
 	{
